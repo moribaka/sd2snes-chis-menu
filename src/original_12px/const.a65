@@ -1,0 +1,721 @@
+.link page $c0
+
+version         .byt "                            v0.1",0
+zero            .word  0
+bg2tile         .byt $20
+.link page $c0
+.link page $c0
+hdma_pal_src
+  .byt $2c,$60,$2d,$0a,$00,$00,$02,$60,$2d,$0b,$00,$00,$0b,$20,$04,$0b
+  .byt $40,$08,$0b,$60,$0c,$0b,$80,$10,$0b,$a0,$14,$0b,$c0,$18,$0b,$e0
+  .byt $1c,$0b,$00,$21,$0b,$20,$25,$0b,$40,$29,$1b,$60,$2d,$02,$20,$04
+  .byt $0b,$60,$2d,$01,$20,$04,$00
+hdma_cg_addr_src
+  .byt $f0
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $f0
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00, $00, $00, $00, $00, $00, $00, $00
+  .byt $00
+hdma_mode_src   .byt 127,$05,97,$05,0
+hdma_bg1scroll_src
+  .byt $7f,$00,$00,$00,$00,$61,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+  .byt $00,$00,$00,$00,$00
+hdma_bg2scroll_src
+  .byt $7f,$00,$00,$61,$00,$00,$00,$00,$00,$00,$00,$00,$00
+; colors:
+; upper border: + #547fff -> 10,15,31
+; selection bar:+ #5400ff -> 10,0,31
+; lower border: 1/2 #5400ff
+.link page $c0
+hdma_math_src
+  .byt $01,$00,$2a,$01,$00,$4f,$01,$33,$9f,$0a,$33,$40,$01,$73,$00,$01
+  .byt $00,$e0,$00
+.link page $c0
+hdma_bar_color_src
+  .byt $2a,$4f,$9f,$40,$36,$4f,$8a,$40
+.link page $c0
+oam_data_l
+  .byt $00,$00,$00,$30,$10,$00,$02,$30,$20,$00,$04,$30,$30,$00,$06,$30
+  .byt $40,$00,$08,$30,$50,$00,$0a,$30,$60,$00,$0c,$30,$70,$00,$0e,$30
+  .byt $80,$00,$20,$30,$90,$00,$22,$30,$a0,$00,$24,$30,$b0,$00,$26,$30
+  .byt $c0,$00,$28,$30,$d0,$00,$2a,$30,$e0,$00,$2c,$30,$f0,$00,$2e,$30
+  .byt $00,$10,$40,$30,$10,$10,$42,$30,$20,$10,$44,$30,$30,$10,$46,$30
+  .byt $40,$10,$48,$30,$50,$10,$4a,$30,$60,$10,$4c,$30,$70,$10,$4e,$30
+  .byt $80,$10,$60,$30,$90,$10,$62,$30,$a0,$10,$64,$30,$b0,$10,$66,$30
+  .byt $c0,$10,$68,$30,$d0,$10,$6a,$30,$e0,$10,$6c,$30,$f0,$10,$6e,$30
+  .byt $00,$20,$80,$30,$10,$20,$82,$30,$20,$20,$84,$30,$30,$20,$86,$30
+  .byt $40,$20,$88,$30,$50,$20,$8a,$30,$60,$20,$8c,$30,$70,$20,$8e,$30
+  .byt $80,$20,$a0,$30,$90,$20,$a2,$30,$a0,$20,$a4,$30,$b0,$20,$a6,$30
+  .byt $c0,$20,$a8,$30,$d0,$20,$aa,$30,$e0,$20,$ac,$30,$f0,$20,$ae,$30
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+  .byt $00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00,$00,$e0,$00,$00
+.link page $c0
+oam_data_h
+  .byt $aa,$aa,$aa,$aa,$aa,$aa,$aa,$aa,$aa,$aa,$aa,$aa,$00,$00,$00,$00
+  .byt $00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+.link page $c0
+space64
+  .byt $1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f
+  .byt $1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f
+  .byt $1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f
+  .byt $1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f,$1f
+  .byt $00
+
+.link page $c0
+text_dirmark
+  .byt $e7,$9b,$ae,$e5,$bd,$95,$00
+window_nw       .byt 20
+window_ne       .byt 21
+window_sw       .byt 22
+window_se       .byt 23
+window_nh       .byt 24
+window_sh       .byt 25
+window_wv       .byt 26
+window_ev       .byt 27
+window_tl       .byt 28
+window_tr       .byt 29
+text_clkset .byt $e8,$af,$b7,$e8,$ae,$be,$e7,$bd,$ae,$e6,$97,$b6,$e9,$97,$b4,0
+time_win_x .byt 16
+time_win_y .byt 8
+time_win_w .byt 32
+time_win_h      .byt 3
+main_win_x      .byt 18
+main_win_y      .byt 11
+main_win_w      .byt 27
+main_win_h      .byt 13
+text_mainmenu .byt $e4,$b8,$bb,$e8,$8f,$9c,$e5,$8d,$95,0
+sysinfo_win_x .byt 2
+sysinfo_win_y .byt 3
+sysinfo_win_w .byt 60
+sysinfo_win_h .byt 15
+last_win_x      .byt 2
+last_win_y .byt 4
+last_win_w      .byt 60
+
+text_ellipse                      .byt 127, 128, 0
+text_mm_file .byt $e6,$96,$87,$e4,$bb,$b6,$e6,$b5,$8f,$e8,$a7,$88,0
+text_mm_last .byt $e6,$9c,$80,$e8,$bf,$91,$e6,$b8,$b8,$e6,$88,$8f,0
+text_mm_favorites .byt $e6,$94,$b6,$e8,$97,$8f,$e6,$b8,$b8,$e6,$88,$8f,0
+mtext_mm_cfg .byt $e8,$ae,$be,$e7,$bd,$ae,0
+mtext_mm_sysinfo .byt $e7,$b3,$bb,$e7,$bb,$9f,$e4,$bf,$a1,$e6,$81,$af,0
+mtext_cfg_time .byt $e8,$ae,$be,$e7,$bd,$ae,$e6,$97,$b6,$e9,$92,$9f,0
+mtext_cfg_bsx .byt $42,$53,$2d,$58,$e8,$ae,$be,$e7,$bd,$ae,0
+mtext_cfg_browser .byt $e6,$b5,$8f,$e8,$a7,$88,$e8,$ae,$be,$e7,$bd,$ae,0
+mtext_cfg_chip .byt $e8,$8a,$af,$e7,$89,$87,$e9,$80,$89,$e9,$a1,$b9,0
+mtext_cfg_sgb .byt $53,$47,$42,$e8,$ae,$be,$e7,$bd,$ae,0
+mtext_cfg_ingame .byt $e6,$b8,$b8,$e6,$88,$8f,$e5,$86,$85,$e8,$ae,$be,$e7,$bd,$ae,0
+mtext_cfg_savestates .byt $e5,$8d,$b3,$e6,$97,$b6,$e5,$ad,$98,$e6,$a1,$a3,$e8,$ae,$be,$e7,$bd,$ae,0
+mtext_cfg_scic .byt $53,$75,$70,$65,$72,$43,$49,$43,$e8,$ae,$be,$e7,$bd,$ae,0
+mtext_bsx_timesource .byt $42,$53,$2d,$58,$e6,$97,$b6,$e9,$92,$9f,0
+mtext_bsx_time .byt $e8,$87,$aa,$e5,$ae,$9a,$e6,$97,$b6,$e9,$97,$b4,0
+mtext_scic_enable .byt $e5,$90,$af,$e7,$94,$a8,$53,$75,$70,$65,$72,$43,$49,$43,0
+mtext_scic_vmode_menu .byt $20,$e8,$8f,$9c,$e5,$8d,$95,$e8,$a7,$86,$e9,$a2,$91,$e6,$a8,$a1,$e5,$bc,$8f,0
+mtext_scic_vmode_game .byt $20,$e6,$b8,$b8,$e6,$88,$8f,$e8,$a7,$86,$e9,$a2,$91,$e6,$a8,$a1,$e5,$bc,$8f,0
+mtext_browser_sort .byt $e7,$9b,$ae,$e5,$bd,$95,$e6,$8e,$92,$e5,$ba,$8f,0
+mtext_browser_hide_ext .byt $e9,$9a,$90,$e8,$97,$8f,$e6,$89,$a9,$e5,$b1,$95,$e5,$90,$8d,0
+mtext_browser_screensaver .byt $e5,$b1,$8f,$e5,$b9,$95,$e4,$bf,$9d,$e6,$8a,$a4,0
+mtext_browser_screensaver_timeout .byt $e7,$ad,$89,$e5,$be,$85,$e6,$97,$b6,$e9,$97,$b4,0
+mtext_browser_ledbright .byt $e6,$8c,$87,$e7,$a4,$ba,$e7,$81,$af,$e4,$ba,$ae,$e5,$ba,$a6,0
+mtext_ingame_cheats .byt $e5,$90,$af,$e5,$8a,$a8,$e6,$97,$b6,$e5,$90,$af,$e7,$94,$a8,$e9,$87,$91,$e6,$89,$8b,$e6,$8c,$87,0
+mtext_ingame_shortreset .byt $e5,$a4,$8d,$e4,$bd,$8d,$e8,$bf,$94,$e5,$9b,$9e,$e8,$8f,$9c,$e5,$8d,$95,0
+mtext_ingame_enable .byt $e6,$b8,$b8,$e6,$88,$8f,$e5,$86,$85,$e9,$92,$a9,$e5,$ad,$90,0
+mtext_ingame_buttons .byt $20,$e6,$b8,$b8,$e6,$88,$8f,$e5,$86,$85,$e7,$bb,$84,$e5,$90,$88,$e9,$94,$ae,0
+mtext_ingame_holdoff .byt $20,$e5,$bb,$b6,$e8,$bf,$9f,$e5,$90,$af,$e7,$94,$a8,0
+mtext_ingame_savestate .byt $e6,$b8,$b8,$e6,$88,$8f,$e5,$86,$85,$e5,$8d,$b3,$e6,$97,$b6,$e5,$ad,$98,$e6,$a1,$a3,0
+mtext_savestate_slots .byt $20,$e5,$8d,$b3,$e6,$97,$b6,$e5,$ad,$98,$e6,$a1,$a3,$e6,$a7,$bd,0
+mtext_loadstate_delay .byt $20,$e8,$af,$bb,$e6,$a1,$a3,$e5,$bb,$b6,$e8,$bf,$9f,$28,$e5,$b8,$a7,$29,0
+mtext_sgb_enable_hooks .byt $e6,$b8,$b8,$e6,$88,$8f,$e5,$86,$85,$e9,$92,$a9,$e5,$ad,$90,0
+mtext_sgb_enable_state .byt $e5,$8d,$b3,$e6,$97,$b6,$e5,$ad,$98,$e6,$a1,$a3,$28,$58,$52,$2f,$58,$4c,$29,0
+mtext_sgb_enh_override .byt $53,$47,$42,$e5,$a2,$9e,$e5,$bc,$ba,$e5,$8a,$9f,$e8,$83,$bd,0
+mtext_sgb_spr_increase .byt $e7,$b2,$be,$e7,$81,$b5,$e6,$95,$b0,$e9,$87,$8f,$e4,$b8,$8a,$e9,$99,$90,$28,$34,$30,$29,0
+mtext_sgb_volume_boost .byt $e9,$9f,$b3,$e9,$87,$8f,$e5,$a2,$9e,$e7,$9b,$8a,0
+mtext_sgb_clock .byt $e6,$97,$b6,$e9,$92,$9f,$e9,$80,$9f,$e5,$ba,$a6,0
+mtext_sgb_bios .byt $42,$49,$4f,$53,$e7,$89,$88,$e6,$9c,$ac,0
+mtext_ingame_regionpatch .byt $e8,$87,$aa,$e5,$8a,$a8,$e5,$8c,$ba,$e5,$9f,$9f,$e8,$a1,$a5,$e4,$b8,$81,0
+mtext_ingame_1chiptransientfixes .byt $31,$43,$48,$49,$50,$e7,$9e,$ac,$e6,$80,$81,$e4,$bf,$ae,$e6,$ad,$a3,0
+mtext_ingame_brightlimit .byt $e4,$ba,$ae,$e5,$ba,$a6,$e4,$b8,$8a,$e9,$99,$90,0
+mtext_ingame_resetpatch .byt $e5,$a4,$8d,$e4,$bd,$8d,$e6,$97,$b6,$e9,$92,$9f,$e8,$a1,$a5,$e4,$b8,$81,0
+mtext_ingame_autosave .byt $e8,$87,$aa,$e5,$8a,$a8,$e5,$ad,$98,$e6,$a1,$a3,0
+mtext_ingame_autosave_msu1 .byt $20,$4d,$53,$55,$2d,$31,$e8,$87,$aa,$e5,$8a,$a8,$e5,$ad,$98,$e6,$a1,$a3,0
+mtext_chip_cx4_speed .byt $43,$78,$34,$e9,$80,$9f,$e5,$ba,$a6,0
+mtext_chip_gsu_speed .byt $53,$75,$70,$65,$72,$46,$58,$e9,$80,$9f,$e5,$ba,$a6,0
+mtext_chip_msu1_volume_boost .byt $4d,$53,$55,$2d,$31,$e9,$9f,$b3,$e9,$87,$8f,$e5,$a2,$9e,$e7,$9b,$8a,0
+
+mdesc_mm_last .byt $e6,$9f,$a5,$e7,$9c,$8b,$e6,$9c,$80,$e8,$bf,$91,$e6,$b8,$b8,$e7,$8e,$a9,$e7,$9a,$84,$e5,$8d,$81,$e4,$b8,$aa,$e6,$b8,$b8,$e6,$88,$8f,0
+mdesc_mm_favorites .byt $e6,$9f,$a5,$e7,$9c,$8b,$e5,$89,$8d,$e5,$8d,$81,$e4,$b8,$aa,$e6,$94,$b6,$e8,$97,$8f,$e6,$b8,$b8,$e6,$88,$8f,0
+mdesc_mm_cfg .byt $e8,$ae,$be,$e7,$bd,$ae,$73,$64,$32,$73,$6e,$65,$73,$e9,$80,$89,$e9,$a1,$b9,0
+mdesc_mm_sysinfo .byt $e6,$9f,$a5,$e7,$9c,$8b,$e5,$9b,$ba,$e4,$bb,$b6,$e3,$80,$81,$e5,$ad,$98,$e5,$82,$a8,$e5,$8d,$a1,$e3,$80,$81,$e4,$b8,$bb,$e6,$9c,$ba,$e5,$92,$8c,$43,$49,$43,$e4,$bf,$a1,$e6,$81,$af,0
+mdesc_cfg_time .byt $e8,$ae,$be,$e7,$bd,$ae,$e6,$97,$a5,$e6,$9c,$9f,$e5,$92,$8c,$e6,$97,$b6,$e9,$97,$b4,0
+mdesc_cfg_bsx .byt $42,$53,$2d,$58,$e5,$8d,$ab,$e6,$98,$9f,$e5,$b9,$bf,$e6,$92,$ad,$e8,$ae,$be,$e7,$bd,$ae,0
+mdesc_cfg_browser .byt $e8,$ae,$be,$e7,$bd,$ae,$e6,$96,$87,$e4,$bb,$b6,$e6,$b5,$8f,$e8,$a7,$88,$e9,$80,$89,$e9,$a1,$b9,0
+mdesc_cfg_chip .byt $e8,$ae,$be,$e7,$bd,$ae,$e7,$89,$b9,$e6,$ae,$8a,$e8,$8a,$af,$e7,$89,$87,$e5,$8a,$9f,$e8,$83,$bd,0
+mdesc_cfg_ingame .byt $e8,$ae,$be,$e7,$bd,$ae,$e6,$b8,$b8,$e6,$88,$8f,$e5,$86,$85,$e5,$8a,$9f,$e8,$83,$bd,0
+mdesc_cfg_sgb .byt $e8,$ae,$be,$e7,$bd,$ae,$53,$75,$70,$65,$72,$20,$47,$61,$6d,$65,$20,$42,$6f,$79,$e5,$8a,$9f,$e8,$83,$bd,0
+mdesc_cfg_savestates .byt $e8,$ae,$be,$e7,$bd,$ae,$e5,$8d,$b3,$e6,$97,$b6,$e5,$ad,$98,$e6,$a1,$a3,$e5,$8a,$9f,$e8,$83,$bd,0
+mdesc_cfg_scic .byt $e8,$ae,$be,$e7,$bd,$ae,$53,$75,$70,$65,$72,$43,$49,$43,$e5,$92,$8c,$e8,$a7,$86,$e9,$a2,$91,$e6,$a8,$a1,$e5,$bc,$8f,0
+mdesc_bsx_timesource .byt $e9,$80,$89,$e6,$8b,$a9,$42,$53,$2d,$58,$e6,$b8,$b8,$e6,$88,$8f,$e8,$af,$bb,$e5,$8f,$96,$e7,$9a,$84,$e6,$97,$a5,$e6,$9c,$9f,$e6,$97,$b6,$e9,$97,$b4,0
+mdesc_bsx_time .byt $e4,$b8,$ba,$42,$53,$2d,$58,$e6,$b8,$b8,$e6,$88,$8f,$e8,$ae,$be,$e7,$bd,$ae,$e8,$87,$aa,$e5,$ae,$9a,$e6,$97,$a5,$e6,$9c,$9f,$e6,$97,$b6,$e9,$97,$b4,0
+mdesc_scic_enable .byt $53,$75,$70,$65,$72,$43,$49,$43,$e5,$a2,$9e,$e5,$bc,$ba,$e5,$8a,$9f,$e8,$83,$bd,$e9,$9c,$80,$e8,$a6,$81,$e6,$ad,$a4,$e9,$80,$89,$e9,$a1,$b9,0
+mdesc_scic_vmode_menu .byt $e9,$80,$89,$e6,$8b,$a9,$e8,$8f,$9c,$e5,$8d,$95,$e8,$a7,$86,$e9,$a2,$91,$e6,$a8,$a1,$e5,$bc,$8f,0
+mdesc_scic_vmode_game .byt $e9,$80,$89,$e6,$8b,$a9,$e6,$b8,$b8,$e6,$88,$8f,$e8,$a7,$86,$e9,$a2,$91,$e6,$a8,$a1,$e5,$bc,$8f,0
+mdesc_browser_sort .byt $e9,$80,$89,$e6,$8b,$a9,$e6,$98,$af,$e5,$90,$a6,$e5,$af,$b9,$e7,$9b,$ae,$e5,$bd,$95,$e6,$8e,$92,$e5,$ba,$8f,0
+mdesc_browser_hide_ext .byt $e9,$80,$89,$e6,$8b,$a9,$e6,$98,$af,$e5,$90,$a6,$e9,$9a,$90,$e8,$97,$8f,$e6,$96,$87,$e4,$bb,$b6,$e6,$89,$a9,$e5,$b1,$95,$e5,$90,$8d,0
+mdesc_browser_screensaver .byt $e9,$97,$b2,$e7,$bd,$ae,$e4,$b8,$80,$e6,$ae,$b5,$e6,$97,$b6,$e9,$97,$b4,$e5,$90,$8e,$e9,$99,$8d,$e4,$bd,$8e,$e7,$94,$bb,$e9,$9d,$a2,$e4,$ba,$ae,$e5,$ba,$a6,0
+mdesc_browser_screensaver_timeout .byt $e8,$ae,$be,$e7,$bd,$ae,$e5,$b1,$8f,$e5,$b9,$95,$e4,$bf,$9d,$e6,$8a,$a4,$e7,$ad,$89,$e5,$be,$85,$e6,$97,$b6,$e9,$97,$b4,0
+mdesc_browser_ledbright .byt $e8,$b0,$83,$e6,$95,$b4,$e6,$8c,$87,$e7,$a4,$ba,$e7,$81,$af,$e4,$ba,$ae,$e5,$ba,$a6,0
+mdesc_ingame_cheats .byt $e8,$ae,$be,$e7,$bd,$ae,$e5,$90,$af,$e5,$8a,$a8,$e6,$b8,$b8,$e6,$88,$8f,$e6,$97,$b6,$e6,$98,$af,$e5,$90,$a6,$e5,$90,$af,$e7,$94,$a8,$e9,$87,$91,$e6,$89,$8b,$e6,$8c,$87,0
+mdesc_ingame_shortreset .byt $e5,$90,$af,$e7,$94,$a8,$e5,$90,$8e,$e7,$9f,$ad,$e5,$a4,$8d,$e4,$bd,$8d,$e5,$8f,$af,$e8,$bf,$94,$e5,$9b,$9e,$e8,$8f,$9c,$e5,$8d,$95,0
+mdesc_ingame_enable .byt $e6,$b8,$b8,$e6,$88,$8f,$e5,$86,$85,$e7,$bb,$84,$e5,$90,$88,$e9,$94,$ae,$e5,$92,$8c,$57,$52,$41,$4d,$e9,$87,$91,$e6,$89,$8b,$e6,$8c,$87,$e9,$9c,$80,$e8,$a6,$81,$e6,$ad,$a4,$e9,$a1,$b9,0
+mdesc_ingame_buttons .byt $e5,$90,$af,$e7,$94,$a8,$e5,$a4,$8d,$e4,$bd,$8d,$e5,$92,$8c,$e9,$87,$91,$e6,$89,$8b,$e6,$8c,$87,$e7,$ad,$89,$e7,$bb,$84,$e5,$90,$88,$e9,$94,$ae,$ef,$bc,$8c,$e9,$9c,$80,$e5,$90,$af,$e7,$94,$a8,$e9,$92,$a9,$e5,$ad,$90,0
+mdesc_ingame_holdoff .byt $e5,$bb,$b6,$e8,$bf,$9f,$e5,$8d,$81,$e7,$a7,$92,$e5,$90,$af,$e7,$94,$a8,$e9,$92,$a9,$e5,$ad,$90,$ef,$bc,$8c,$e6,$94,$b9,$e5,$96,$84,$e9,$83,$a8,$e5,$88,$86,$e6,$b8,$b8,$e6,$88,$8f,$e5,$85,$bc,$e5,$ae,$b9,$e6,$80,$a7,0
+mdesc_ingame_savestate .byt $e9,$bb,$98,$e8,$ae,$a4,$e5,$ad,$98,$e6,$a1,$a3,$53,$74,$61,$72,$74,$2b,$4c,$ef,$bc,$8c,$e8,$af,$bb,$e6,$a1,$a3,$53,$74,$61,$72,$74,$2b,$52,0
+mdesc_savestate_slots .byt $53,$65,$6c,$65,$63,$74,$e5,$8a,$a0,$e6,$96,$b9,$e5,$90,$91,$e9,$94,$ae,$e9,$80,$89,$e6,$8b,$a9,$e5,$8d,$b3,$e6,$97,$b6,$e5,$ad,$98,$e6,$a1,$a3,$e6,$a7,$bd,0
+mdesc_loadstate_delay .byt $e8,$b0,$83,$e6,$95,$b4,$e8,$af,$bb,$e5,$8f,$96,$e5,$8d,$b3,$e6,$97,$b6,$e5,$ad,$98,$e6,$a1,$a3,$e7,$9a,$84,$e7,$ad,$89,$e5,$be,$85,$e5,$b8,$a7,$e6,$95,$b0,0
+mdesc_sgb_enable_hooks .byt $e6,$b8,$b8,$e6,$88,$8f,$e5,$86,$85,$e7,$bb,$84,$e5,$90,$88,$e9,$94,$ae,$e9,$9c,$80,$e8,$a6,$81,$e6,$ad,$a4,$e9,$a1,$b9,0
+mdesc_sgb_enable_state .byt $e5,$90,$af,$e7,$94,$a8,$53,$47,$42,$32,$e5,$86,$85,$e7,$bd,$ae,$e5,$8d,$b3,$e6,$97,$b6,$e5,$ad,$98,$e6,$a1,$a3,$28,$58,$52,$2f,$58,$4c,$29,0
+mdesc_sgb_enh_override .byt $e5,$bc,$80,$e5,$90,$af,$e6,$88,$96,$e5,$85,$b3,$e9,$97,$ad,$53,$47,$42,$e5,$a2,$9e,$e5,$bc,$ba,$e5,$8a,$9f,$e8,$83,$bd,0
+mdesc_sgb_spr_increase .byt $e6,$8f,$90,$e9,$ab,$98,$e5,$8f,$af,$e8,$a7,$81,$e7,$b2,$be,$e7,$81,$b5,$e6,$95,$b0,$e9,$87,$8f,$e4,$b8,$8a,$e9,$99,$90,0
+mdesc_sgb_volume_boost .byt $e6,$8f,$90,$e9,$ab,$98,$53,$47,$42,$e5,$a3,$b0,$e9,$9f,$b3,$e9,$9f,$b3,$e9,$87,$8f,0
+mdesc_sgb_clock .byt $e8,$b0,$83,$e6,$95,$b4,$53,$47,$42,$e6,$97,$b6,$e9,$92,$9f,$e9,$80,$9f,$e5,$ba,$a6,0
+mdesc_sgb_bios .byt $e9,$80,$89,$e6,$8b,$a9,$53,$47,$42,$e5,$9b,$ba,$e4,$bb,$b6,$e7,$89,$88,$e6,$9c,$ac,0
+mdesc_ingame_regionpatch .byt $e8,$b7,$b3,$e8,$bf,$87,$e7,$ae,$80,$e5,$8d,$95,$e7,$9a,$84,$e6,$b8,$b8,$e6,$88,$8f,$e5,$8c,$ba,$e5,$9f,$9f,$e4,$bf,$9d,$e6,$8a,$a4,0
+mdesc_ingame_1chiptransientfixes .byt $e4,$bf,$ae,$e6,$ad,$a3,$31,$43,$48,$49,$50,$e4,$b8,$bb,$e6,$9c,$ba,$e4,$ba,$ae,$e5,$ba,$a6,$e5,$8f,$98,$e5,$8c,$96,$e5,$bc,$95,$e8,$b5,$b7,$e7,$9a,$84,$e7,$94,$bb,$e9,$9d,$a2,$e9,$97,$ae,$e9,$a2,$98,0
+mdesc_ingame_brightlimit .byt $e9,$99,$90,$e5,$88,$b6,$e6,$95,$b4,$e4,$bd,$93,$e4,$ba,$ae,$e5,$ba,$a6,$e4,$bb,$a5,$e9,$80,$82,$e9,$85,$8d,$52,$47,$42,$e7,$94,$b5,$e5,$b9,$b3,0
+mdesc_ingame_resetpatch .byt $e5,$a4,$8d,$e4,$bd,$8d,$e6,$97,$b6,$e5,$af,$b9,$e9,$bd,$90,$e6,$97,$b6,$e9,$92,$9f,$e4,$bb,$a5,$e4,$bf,$ae,$e6,$ad,$a3,$e9,$83,$a8,$e5,$88,$86,$e7,$94,$bb,$e9,$9d,$a2,$e9,$97,$ae,$e9,$a2,$98,0
+mdesc_ingame_autosave .byt $e5,$ad,$98,$e6,$a1,$a3,$e5,$86,$85,$e5,$ae,$b9,$e5,$8f,$98,$e5,$8c,$96,$e6,$97,$b6,$e8,$87,$aa,$e5,$8a,$a8,$e5,$86,$99,$e5,$9b,$9e,$53,$52,$4d,$e6,$96,$87,$e4,$bb,$b6,0
+mdesc_ingame_autosave_msu1 .byt $4d,$53,$55,$2d,$31,$e8,$bf,$90,$e8,$a1,$8c,$e6,$97,$b6,$e8,$87,$aa,$e5,$8a,$a8,$e5,$ad,$98,$e6,$a1,$a3,$e5,$8f,$af,$e8,$83,$bd,$e9,$80,$a0,$e6,$88,$90,$e7,$9f,$ad,$e6,$9a,$82,$e5,$81,$9c,$e9,$a1,$bf,0
+mdesc_chip_cx4_speed .byt $e8,$b0,$83,$e6,$95,$b4,$43,$78,$34,$e8,$bd,$af,$e6,$a0,$b8,$e9,$80,$9f,$e5,$ba,$a6,0
+mdesc_chip_gsu_speed .byt $e8,$b0,$83,$e6,$95,$b4,$53,$75,$70,$65,$72,$46,$58,$e8,$bd,$af,$e6,$a0,$b8,$e9,$80,$9f,$e5,$ba,$a6,0
+mdesc_chip_msu1_volume_boost .byt $e5,$a3,$b0,$e9,$9f,$b3,$e8,$be,$83,$e5,$b0,$8f,$e6,$97,$b6,$e5,$8f,$af,$e6,$8f,$90,$e9,$ab,$98,$4d,$53,$55,$2d,$31,$e9,$9f,$b3,$e9,$87,$8f,0
+mdesc_cx4_speed_fast .byt $e4,$bb,$a5,$e5,$b0,$bd,$e5,$8f,$af,$e8,$83,$bd,$e5,$bf,$ab,$e7,$9a,$84,$e9,$80,$9f,$e5,$ba,$a6,$e8,$bf,$90,$e8,$a1,$8c,0
+mdesc_cx4_speed_normal .byt $e4,$bb,$a5,$e6,$8e,$a5,$e8,$bf,$91,$e5,$8e,$9f,$e8,$8a,$af,$e7,$89,$87,$e7,$9a,$84,$e9,$80,$9f,$e5,$ba,$a6,$e8,$bf,$90,$e8,$a1,$8c,0
+mdesc_gsu_speed_fast .byt $e4,$bb,$a5,$e5,$b0,$bd,$e5,$8f,$af,$e8,$83,$bd,$e5,$bf,$ab,$e7,$9a,$84,$e9,$80,$9f,$e5,$ba,$a6,$e8,$bf,$90,$e8,$a1,$8c,0
+mdesc_gsu_speed_normal .byt $e4,$bb,$a5,$e6,$8e,$a5,$e8,$bf,$91,$e5,$8e,$9f,$e8,$8a,$af,$e7,$89,$87,$e7,$9a,$84,$e9,$80,$9f,$e5,$ba,$a6,$e8,$bf,$90,$e8,$a1,$8c,0
+
+text_filesel_selected_file .byt $e6,$89,$80,$e9,$80,$89,$e6,$96,$87,$e4,$bb,$b6,0
+text_filesel_context_add_to_favorites .byt $e5,$8a,$a0,$e5,$85,$a5,$e6,$94,$b6,$e8,$97,$8f,0
+mdesc_filesel_context_add_to_favorites .byt $e5,$b0,$86,$e6,$89,$80,$e9,$80,$89,$e6,$96,$87,$e4,$bb,$b6,$e5,$8a,$a0,$e5,$85,$a5,$e6,$94,$b6,$e8,$97,$8f,0
+
+text_filesel_context_remove_from_favorites .byt $e5,$8f,$96,$e6,$b6,$88,$e6,$94,$b6,$e8,$97,$8f,0
+mdesc_filesel_context_remove_from_favorites .byt $e5,$b0,$86,$e6,$89,$80,$e9,$80,$89,$e6,$96,$87,$e4,$bb,$b6,$e4,$bb,$8e,$e6,$94,$b6,$e8,$97,$8f,$e7,$a7,$bb,$e9,$99,$a4,0
+
+text_recent_context_remove_from_recent .byt $e7,$a7,$bb,$e5,$87,$ba,$e6,$9c,$80,$e8,$bf,$91,$e6,$b8,$b8,$e6,$88,$8f,0
+mdesc_recent_context_remove_from_recent .byt $e5,$b0,$86,$e6,$89,$80,$e9,$80,$89,$e6,$96,$87,$e4,$bb,$b6,$e4,$bb,$8e,$e6,$9c,$80,$e8,$bf,$91,$e6,$b8,$b8,$e6,$88,$8f,$e5,$88,$97,$e8,$a1,$a8,$e7,$a7,$bb,$e9,$99,$a4,0
+
+text_filesel_set_as_autoboot .byt $e8,$ae,$be,$e4,$b8,$ba,$e8,$87,$aa,$e5,$8a,$a8,$e5,$90,$af,$e5,$8a,$a8,0
+mdesc_filesel_set_as_autoboot .byt $e4,$b8,$8b,$e6,$ac,$a1,$e5,$bc,$80,$e6,$9c,$ba,$e8,$87,$aa,$e5,$8a,$a8,$e5,$90,$af,$e5,$8a,$a8,$e6,$ad,$a4,$e6,$b8,$b8,$e6,$88,$8f,$ef,$bc,$8c,$e6,$8c,$89,$e4,$bd,$8f,$53,$74,$61,$72,$74,$e5,$8f,$af,$e5,$8f,$96,$e6,$b6,$88,0
+
+text_statusbar_play .byt $41,$3a,$e8,$bf,$90,$e8,$a1,$8c,$20,$42,$3a,$e8,$bf,$94,$e5,$9b,$9e,$20,$58,$3a,$e8,$8f,$9c,$e5,$8d,$95,0
+text_statusbar_keys .byt $41,$3a,$e9,$80,$89,$20,$42,$3a,$e8,$bf,$94,$20,$58,$3a,$e8,$8f,$9c,$e5,$8d,$95,$20,$59,$3a,$e9,$80,$89,$e9,$a1,$b9,0
+text_statusbar_spc .byt $42,$3a,$e8,$bf,$94,$e5,$9b,$9e,0
+text_statusbar_menu .byt $41,$3a,$e9,$80,$89,$e6,$8b,$a9,$20,$42,$3a,$e8,$bf,$94,$e5,$9b,$9e,0
+text_last .byt $e6,$9c,$80,$e8,$bf,$91,$e6,$b8,$b8,$e6,$88,$8f,0
+text_favorite .byt $e6,$94,$b6,$e8,$97,$8f,$e6,$b8,$b8,$e6,$88,$8f,0
+.link page $c0
+text_system
+  .byt $43,$50,$55,$2f,$50,$50,$55,$3a,$20,$30,$2f,$30,$2f,$30,$20,$30
+  .byt $30,$48,$7a,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00,$00
+  .byt $00,$00,$00,$00,$00,$00,$00
+
+text_on_p1 .byt $e5,$bc,$80,$e5,$90,$af,$3a,$50,$31,0
+text_on_p2 .byt $e5,$bc,$80,$e5,$90,$af,$3a,$50,$32,0
+text_on .byt $e5,$bc,$80,$e5,$90,$af,0
+text_off .byt $e5,$85,$b3,$e9,$97,$ad,0
+text_enabled .byt $e5,$90,$af,$e7,$94,$a8,0
+text_disabled .byt $e7,$a6,$81,$e7,$94,$a8,0
+text_normal .byt $e6,$a0,$87,$e5,$87,$86,0
+text_fast .byt $e5,$8a,$a0,$e9,$80,$9f,0
+text_rtc .byt $e5,$ae,$9e,$e6,$97,$b6,$e6,$97,$b6,$e9,$92,$9f,0
+text_custom .byt $e8,$87,$aa,$e5,$ae,$9a,$e4,$b9,$89,0
+text_yes .byt $e6,$98,$af,0
+text_no .byt $e5,$90,$a6,0
+text_50Hz       .byt "50Hz", 0
+text_60Hz       .byt "60Hz", 0
+text_auto .byt $e8,$87,$aa,$e5,$8a,$a8,0
+text_pal        .byt "PAL", 0
+text_ntsc       .byt "NTSC", 0
+text_add .byt $e6,$b7,$bb,$e5,$8a,$a0,0
+text_remove .byt $e7,$a7,$bb,$e9,$99,$a4,0
+text_edit .byt $e7,$bc,$96,$e8,$be,$91,0
+text_save .byt $e4,$bf,$9d,$e5,$ad,$98,0
+
+text_1min .byt $31,$e5,$88,$86,$e9,$92,$9f,0
+text_2min .byt $32,$e5,$88,$86,$e9,$92,$9f,0
+text_3min .byt $33,$e5,$88,$86,$e9,$92,$9f,0
+text_4min .byt $34,$e5,$88,$86,$e9,$92,$9f,0
+text_5min .byt $35,$e5,$88,$86,$e9,$92,$9f,0
+text_10min .byt $31,$30,$e5,$88,$86,$e9,$92,$9f,0
+text_15min .byt $31,$35,$e5,$88,$86,$e9,$92,$9f,0
+text_20min .byt $32,$30,$e5,$88,$86,$e9,$92,$9f,0
+text_30min .byt $33,$30,$e5,$88,$86,$e9,$92,$9f,0
+text_45min .byt $34,$35,$e5,$88,$86,$e9,$92,$9f,0
+text_60min .byt $31,$e5,$b0,$8f,$e6,$97,$b6,0
+
+text_minus1     .byt "-1", 0
+text_minus2     .byt "-2", 0
+text_minus3     .byt "-3", 0
+text_minus4     .byt "-4", 0
+text_minus5     .byt "-5", 0
+text_minus6     .byt "-6", 0
+text_minus7     .byt "-7", 0
+
+text_1          .byt "1", 0
+text_2          .byt "2", 0
+text_3          .byt "3", 0
+text_4          .byt "4", 0
+text_5          .byt "5", 0
+text_6          .byt "6", 0
+text_7          .byt "7", 0
+text_8          .byt "8", 0
+text_9          .byt "9", 0
+text_10         .byt "10", 0
+text_11         .byt "11", 0
+text_12         .byt "12", 0
+text_13         .byt "13", 0
+text_14         .byt "14", 0
+text_15_max .byt $31,$35,$28,$e6,$9c,$80,$e5,$a4,$a7,$29,0
+
+text_3_5db      .byt "+3.5dBFS", 0
+text_6db        .byt "+6dBFS", 0
+text_9_5db      .byt "+9.5dBFS", 0
+text_12db       .byt "+12dBFS", 0
+
+text_sgb_clock1 .byt "SGB1: 4.295 MHz", 0
+text_sgb_clock2 .byt "SGB2: 4.194 MHz", 0
+
+text_spcplay .byt $53,$50,$43,$e9,$9f,$b3,$e4,$b9,$90,$e6,$92,$ad,$e6,$94,$be,$e5,$99,$a8,0
+spcplay_win_x .byt 12
+spcplay_win_y .byt 8
+spcplay_win_w .byt 40
+spcplay_win_h   .byt 3
+
+text_spcload .byt $e6,$ad,$a3,$e5,$9c,$a8,$e8,$bd,$bd,$e5,$85,$a5,$53,$50,$43,$37,$30,$30,$e6,$95,$b0,$e6,$8d,$ae,$2e,$2e,$2e,0
+.link page $c0
+text_spcstarta
+  .byt $e6,$ad,$a3,$e5,$9c,$a8,$e6,$92,$ad,$e6,$94,$be,$20,$53,$50,$43
+  .byt $20,$e9,$9f,$b3,$e4,$b9,$90,$00
+text_spcstartb .byt $e5,$90,$8d,$e7,$a7,$b0,$3a,$20,$20,0
+text_spcstartc .byt $e6,$9b,$b2,$e7,$9b,$ae,$3a,$20,$20,0
+text_spcstartd .byt $e4,$bd,$9c,$e8,$80,$85,$3a,$20,$20,0
+text_spc_statusbar .byt $42,$3a,$e8,$bf,$94,$e5,$9b,$9e,0
+
+spcstart_win_x .byt 8
+spcstart_win_y .byt 6
+spcstart_win_w .byt 48
+spcstart_win_h  .byt 9
+
+text_loading .byt $e8,$bd,$bd,$e5,$85,$a5,$e4,$b8,$ad,$2e,$2e,$2e,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,0
+text_saving .byt $e4,$bf,$9d,$e5,$ad,$98,$e4,$b8,$ad,$2e,$2e,$2e,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,0
+loading_win_x   .byt 2
+loading_win_y   .byt 28
+loading_win_w   .byt 34
+loading_win_h   .byt 1
+
+text_cheat .byt $e9,$87,$91,$e6,$89,$8b,$e6,$8c,$87,$3a,$20,0
+cheat_win_x     .byt 6
+cheat_win_y .byt 3
+cheat_win_w     .byt 52
+cheat_win_h     .byt 15
+
+cheat_tab_head .byt $e5,$90,$8d,$e7,$a7,$b0,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$20,$e4,$bb,$a3,$e7,$a0,$81,$e6,$95,$b0,$20,$20,$20,$20,$20,$e5,$90,$af,$e7,$94,$a8,0
+cheat_tab_line  .byt 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24
+                .byt 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24
+                .byt 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,0
+
+cheat_detail_head .byt $50,$41,$52,$20,$20,$20,$20,$20,$20,$20,$47,$47,$20,$20,$20,$20,$20,$20,$20,$20,$e5,$9c,$b0,$e5,$9d,$80,$20,$20,$20,$20,$e6,$95,$b0,$e5,$80,$bc,0
+cheat_detail_line .byt 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24
+                  .byt 24,24,24,24,24,24,24,24,24,24,24,24,24,24,24,24
+                  .byt 24,0
+
+text_spcid      .byt "SNES-SPC700"
+rootdir         .byt "/", 0
+gfxptr_info     .byt "_GFXPTR_"
+                .word font
+                .word logo
+                .word logospr
+                .word hdma_math_src
+                .word hdma_bar_color_src
+                .word hdma_pal_src
+                .word oam_data_l
+                .word oam_data_h
+                .word palette
+
+i18n_en_text_dirmark    .byt " <dir>", 0
+i18n_en_text_clkset     .byt "Please set the time", 0
+i18n_en_text_mainmenu   .byt "Main Menu", 0
+i18n_en_text_mm_file                      .byt "File Browser", 0
+i18n_en_text_mm_last                      .byt "Recent Games", 0
+i18n_en_text_mm_favorites                 .byt "Favorite Games", 0
+i18n_en_mtext_mm_cfg                      .byt "Configuration", 0
+i18n_en_mtext_mm_sysinfo                  .byt "System Information", 0
+i18n_en_mtext_cfg_time                    .byt "Set Clock", 0
+i18n_en_mtext_cfg_bsx                     .byt "BS-X Settings", 0
+i18n_en_mtext_cfg_browser                 .byt "Browser Settings", 0
+i18n_en_mtext_cfg_chip                    .byt "Chip Options", 0
+i18n_en_mtext_cfg_sgb                     .byt "SGB Settings", 0
+i18n_en_mtext_cfg_ingame                  .byt "In-game Settings", 0
+i18n_en_mtext_cfg_savestates              .byt "Savestates Settings", 0
+i18n_en_mtext_cfg_scic                    .byt "SuperCIC Settings", 0
+i18n_en_mtext_bsx_timesource              .byt "BS-X clock", 0
+i18n_en_mtext_bsx_time                    .byt "Custom time", 0
+i18n_en_mtext_scic_enable                 .byt "Enable SuperCIC", 0
+i18n_en_mtext_scic_vmode_menu             .byt " ",129,"Menu video mode", 0
+i18n_en_mtext_scic_vmode_game             .byt " ",129,"Game video mode", 0
+i18n_en_mtext_browser_sort                .byt "Sort directories", 0
+i18n_en_mtext_browser_hide_ext            .byt "Hide file extensions", 0
+i18n_en_mtext_browser_screensaver         .byt "Screensaver", 0
+i18n_en_mtext_browser_screensaver_timeout .byt "Fade screen after", 0
+i18n_en_mtext_browser_ledbright           .byt "LED brightness", 0
+i18n_en_mtext_ingame_cheats               .byt "Start with cheats enabled", 0
+i18n_en_mtext_ingame_shortreset           .byt "Reset to menu", 0
+i18n_en_mtext_ingame_enable               .byt "In-game hook", 0
+i18n_en_mtext_ingame_buttons              .byt " ",129,"In-game buttons", 0
+i18n_en_mtext_ingame_holdoff              .byt " ",129,"Initial holdoff", 0
+i18n_en_mtext_ingame_savestate            .byt "In-game savestates", 0
+i18n_en_mtext_savestate_slots             .byt " ",129,"Savestate slots", 0
+i18n_en_mtext_loadstate_delay             .byt " ",129,"Load delay (frames)", 0
+i18n_en_mtext_sgb_enable_hooks            .byt "In-game hooks", 0
+i18n_en_mtext_sgb_enable_state            .byt "Savestates (XR, XL)", 0
+i18n_en_mtext_sgb_enh_override            .byt "SGB features", 0
+.link page $c0
+i18n_en_mtext_sgb_spr_increase
+  .byt $53,$70,$72,$69,$74,$65,$20,$6c,$69,$6d,$69,$74,$20,$28,$34,$30
+  .byt $29,$00
+i18n_en_mtext_sgb_volume_boost            .byt "Volume boost", 0
+i18n_en_mtext_sgb_clock                   .byt "Clock (Timing)", 0
+i18n_en_mtext_sgb_bios                    .byt "BIOS version", 0
+i18n_en_mtext_ingame_regionpatch          .byt "Auto region patch", 0
+i18n_en_mtext_ingame_1chiptransientfixes  .byt "1CHIP transient fixes", 0
+i18n_en_mtext_ingame_brightlimit          .byt "Brightness limit", 0
+i18n_en_mtext_ingame_resetpatch           .byt "Reset patch for clock phase", 0
+i18n_en_mtext_ingame_autosave             .byt "Autosave", 0
+i18n_en_mtext_ingame_autosave_msu1        .byt " ",129,"MSU-1 Autosave", 0
+i18n_en_mtext_chip_cx4_speed              .byt "Cx4 speed", 0
+i18n_en_mtext_chip_gsu_speed              .byt "SuperFX speed", 0
+i18n_en_mtext_chip_msu1_volume_boost      .byt "MSU-1 volume boost", 0
+i18n_en_mdesc_mm_last                     .byt "Show up to 10 most recently played games", 0
+i18n_en_mdesc_mm_favorites                .byt "Show up to 10 favorite games", 0
+i18n_en_mdesc_mm_cfg                      .byt "Configure the sd2snes", 0
+i18n_en_mdesc_mm_sysinfo                  .byt "Info about FW version, SD Card, SNES, CIC", 127, 128, 0
+i18n_en_mdesc_cfg_time                    .byt "Set the date and time", 0
+i18n_en_mdesc_cfg_bsx                     .byt "BS-X/Satellaview specific settings", 0
+i18n_en_mdesc_cfg_browser                 .byt "Change file browser settings", 0
+i18n_en_mdesc_cfg_chip                    .byt "Set special chip features", 0
+i18n_en_mdesc_cfg_ingame                  .byt "Set in-game features", 0
+i18n_en_mdesc_cfg_sgb                     .byt "Set Super Game Boy features", 0
+i18n_en_mdesc_cfg_savestates              .byt "Set savestates features", 0
+i18n_en_mdesc_cfg_scic                    .byt "Enable/Disable SuperCIC and set video modes", 0
+i18n_en_mdesc_bsx_timesource              .byt "Choose what date and time BS-X games see", 0
+i18n_en_mdesc_bsx_time                    .byt "Set custom time and date for BS-X games", 0
+i18n_en_mdesc_scic_enable                 .byt "Required for SuperCIC enhanced features", 0
+i18n_en_mdesc_scic_vmode_menu             .byt "Set video mode for menu", 0
+i18n_en_mdesc_scic_vmode_game             .byt "Set video mode for games", 0
+i18n_en_mdesc_browser_sort                .byt "Choose whether to sort file lists", 0
+i18n_en_mdesc_browser_hide_ext            .byt "Choose whether to hide file extensions", 0
+i18n_en_mdesc_browser_screensaver         .byt "Fade-out the screen after some time", 0
+i18n_en_mdesc_browser_screensaver_timeout .byt "Set time after which to fade the screen", 0
+i18n_en_mdesc_browser_ledbright           .byt "Change brightness of LEDs", 0
+i18n_en_mdesc_ingame_cheats               .byt "Whether to start out with cheats enabled. Can be changed using in-game buttons", 0
+i18n_en_mdesc_ingame_shortreset           .byt "Go back to menu on short reset if enabled", 0
+i18n_en_mdesc_ingame_enable               .byt "Required for in-game buttons and 7E/7F cheats", 0
+i18n_en_mdesc_ingame_buttons              .byt "Enable in-game buttons (reset, en/disable cheats", 127, 128, "). Requires in-game hook to be enabled.", 0
+i18n_en_mdesc_ingame_holdoff              .byt "Wait 10 seconds before enabling hook (helps some games boot with hook enabled)", 0
+i18n_en_mdesc_ingame_savestate            .byt "Enable in-game savestates and choose controller. Default: Save - Start+L / Load - Start+R", 0
+i18n_en_mdesc_savestate_slots             .byt "Enable savestate slots. Select+Dpad: Each direction is a slot to choose", 0
+i18n_en_mdesc_loadstate_delay             .byt "Adjust the load state delay (frames)", 0
+i18n_en_mdesc_sgb_enable_hooks            .byt "Required for in-game buttons", 0
+i18n_en_mdesc_sgb_enable_state            .byt "Enable built-in savestates on SGB2 (XR, XL)", 0
+i18n_en_mdesc_sgb_enh_override            .byt "Disable/enable the SGB enhancements", 0
+i18n_en_mdesc_sgb_spr_increase            .byt "Increase number of supported visible sprites", 0
+i18n_en_mdesc_sgb_volume_boost            .byt "Set volume boost for SGB audio if its too quiet", 0
+i18n_en_mdesc_sgb_clock                   .byt "Adjusts the SGB clock (timing)", 0
+i18n_en_mdesc_sgb_bios                    .byt "Select a SGB firmware/BIOS version", 0
+i18n_en_mdesc_ingame_regionpatch          .byt "Bypass simple region protection by games", 0
+i18n_en_mdesc_ingame_1chiptransientfixes  .byt "Patch brightness changes to fix sync glitches, fading scanlines and missing shadow on 1CHIP/Jr. consoles", 0
+i18n_en_mdesc_ingame_brightlimit          .byt "Limit overall brightness (e.g. on 1CHIP consoles to meet RGB line levels)", 0
+i18n_en_mdesc_ingame_resetpatch           .byt "Enable reset patch to align clocks.  Fixes graphical issues in some games", 0
+i18n_en_mdesc_ingame_autosave             .byt "Automatically save SRM file when Save RAM contents change", 0
+i18n_en_mdesc_ingame_autosave_msu1        .byt "MSU-1: Take some opportunities to auto-save SRM file. May cause brief stuttering.", 0
+i18n_en_mdesc_chip_cx4_speed              .byt "Set speed of Cx4 soft core", 0
+i18n_en_mdesc_chip_gsu_speed              .byt "Set speed of SuperFX soft core", 0
+i18n_en_mdesc_chip_msu1_volume_boost      .byt "Set volume boost for MSU1 audio if your sd2snes is too quiet (Rev. E-G)", 0
+i18n_en_mdesc_cx4_speed_fast              .byt "Run as fast as possible", 0
+i18n_en_mdesc_cx4_speed_normal            .byt "Run at approx. original speed", 0
+i18n_en_mdesc_gsu_speed_fast              .byt "Run as fast as possible", 0
+i18n_en_mdesc_gsu_speed_normal            .byt "Run at approx. original speed", 0
+i18n_en_text_filesel_selected_file .byt "Selected file", 0
+i18n_en_text_filesel_context_add_to_favorites .byt "Add to favorites", 0
+i18n_en_mdesc_filesel_context_add_to_favorites .byt "Add the selected file to favorites", 0
+i18n_en_text_filesel_context_remove_from_favorites .byt "Remove from favorites", 0
+i18n_en_mdesc_filesel_context_remove_from_favorites .byt "Remove the selected file from favorites", 0
+i18n_en_text_recent_context_remove_from_recent .byt "Remove from recent games", 0
+i18n_en_mdesc_recent_context_remove_from_recent .byt "Remove selected file from the recent games list", 0
+i18n_en_text_filesel_set_as_autoboot .byt "Set as autoboot", 0
+i18n_en_mdesc_filesel_set_as_autoboot .byt "Boot this ROM automatically on next power-on (hold START during powerup/reset to cancel)", 0
+i18n_en_text_statusbar_play .byt "A:Play B:Back X:Menu", 0
+.link page $c0
+i18n_en_text_statusbar_keys
+  .byt $41,$3a,$4f,$4b,$20,$42,$3a,$42,$61,$63,$6b,$20,$58,$3a,$4d,$65
+  .byt $6e,$75,$20,$59,$3a,$4f,$70,$74,$73,$00
+i18n_en_text_statusbar_spc  .byt "B:Back", 0
+i18n_en_text_statusbar_menu .byt "A:Select B:Back", 0
+i18n_en_text_last           .byt "Recent games", 0
+i18n_en_text_favorite       .byt "Favorite games", 0
+i18n_en_text_on_p1      .byt "On: P1", 0
+i18n_en_text_on_p2      .byt "On: P2", 0
+i18n_en_text_on         .byt "On", 0
+i18n_en_text_off        .byt "Off", 0
+i18n_en_text_enabled    .byt "Enabled", 0
+i18n_en_text_disabled   .byt "Disabled", 0
+i18n_en_text_normal     .byt "Normal", 0
+i18n_en_text_fast       .byt "Fast", 0
+i18n_en_text_rtc        .byt "Real-time", 0
+i18n_en_text_custom     .byt "Custom", 0
+i18n_en_text_yes        .byt "Yes", 0
+i18n_en_text_no         .byt "No", 0
+i18n_en_text_auto       .byt "Auto", 0
+i18n_en_text_add        .byt "Add", 0
+i18n_en_text_remove     .byt "Remove", 0
+i18n_en_text_edit       .byt "Edit", 0
+i18n_en_text_save       .byt "Save", 0
+i18n_en_text_1min       .byt "1 min", 0
+i18n_en_text_2min       .byt "2 mins", 0
+i18n_en_text_3min       .byt "3 mins", 0
+i18n_en_text_4min       .byt "4 mins", 0
+i18n_en_text_5min       .byt "5 mins", 0
+i18n_en_text_10min      .byt "10 mins", 0
+i18n_en_text_15min      .byt "15 mins", 0
+i18n_en_text_20min      .byt "20 mins", 0
+i18n_en_text_30min      .byt "30 mins", 0
+i18n_en_text_45min      .byt "45 mins", 0
+i18n_en_text_60min      .byt "1 hour", 0
+i18n_en_text_15_max     .byt "15 (max)", 0
+i18n_en_text_spcplay    .byt "SPC Music Player", 0
+i18n_en_text_spcload    .byt "Loading SPC data to SPC700", 127, 128, 0
+.link page $c0
+i18n_en_text_spcstarta
+  .byt $50,$6c,$61,$79,$69,$6e,$67,$20,$53,$50,$43,$20,$6d,$75,$73,$69
+  .byt $63,$00
+i18n_en_text_spcstartb  .byt "Name:  ",0
+i18n_en_text_spcstartc  .byt "Song:  ",0
+i18n_en_text_spcstartd  .byt "Artist:",0
+i18n_en_text_spc_statusbar .byt "B:Back", 0
+i18n_en_text_loading    .byt "Loading", 127, 128, "                        ",0
+i18n_en_text_saving     .byt "Saving", 127, 128, "                         ",0
+i18n_en_text_cheat      .byt "Cheats for ", 0
+i18n_en_cheat_tab_head  .byt "Name                         # of codes  Enabled", 0
+i18n_en_cheat_detail_head .byt "PAR       GG        Address Value", 0
+i18n_en_theme_caption .byt "Storage",0
+i18n_en_theme_name .byt "Name",0
+i18n_en_theme_size .byt "Size",0
+i18n_en_theme_loading_title .byt "Please wait",0
+i18n_en_i18n_label .byt "Language: English",0
+i18n_label .byt $e8,$af,$ad,$e8,$a8,$80,$3a,$20,$e4,$b8,$ad,$e6,$96,$87,0
+
+i18n_pairs
+ .word !text_dirmark,!i18n_en_text_dirmark
+ .word !text_clkset,!i18n_en_text_clkset
+ .word !text_mainmenu,!i18n_en_text_mainmenu
+ .word !text_mm_file,!i18n_en_text_mm_file
+ .word !text_mm_last,!i18n_en_text_mm_last
+ .word !text_mm_favorites,!i18n_en_text_mm_favorites
+ .word !mtext_mm_cfg,!i18n_en_mtext_mm_cfg
+ .word !mtext_mm_sysinfo,!i18n_en_mtext_mm_sysinfo
+ .word !mtext_cfg_time,!i18n_en_mtext_cfg_time
+ .word !mtext_cfg_bsx,!i18n_en_mtext_cfg_bsx
+ .word !mtext_cfg_browser,!i18n_en_mtext_cfg_browser
+ .word !mtext_cfg_chip,!i18n_en_mtext_cfg_chip
+ .word !mtext_cfg_sgb,!i18n_en_mtext_cfg_sgb
+ .word !mtext_cfg_ingame,!i18n_en_mtext_cfg_ingame
+ .word !mtext_cfg_savestates,!i18n_en_mtext_cfg_savestates
+ .word !mtext_cfg_scic,!i18n_en_mtext_cfg_scic
+ .word !mtext_bsx_timesource,!i18n_en_mtext_bsx_timesource
+ .word !mtext_bsx_time,!i18n_en_mtext_bsx_time
+ .word !mtext_scic_enable,!i18n_en_mtext_scic_enable
+ .word !mtext_scic_vmode_menu,!i18n_en_mtext_scic_vmode_menu
+ .word !mtext_scic_vmode_game,!i18n_en_mtext_scic_vmode_game
+ .word !mtext_browser_sort,!i18n_en_mtext_browser_sort
+ .word !mtext_browser_hide_ext,!i18n_en_mtext_browser_hide_ext
+ .word !mtext_browser_screensaver,!i18n_en_mtext_browser_screensaver
+ .word !mtext_browser_screensaver_timeout,!i18n_en_mtext_browser_screensaver_timeout
+ .word !mtext_browser_ledbright,!i18n_en_mtext_browser_ledbright
+ .word !mtext_ingame_cheats,!i18n_en_mtext_ingame_cheats
+ .word !mtext_ingame_shortreset,!i18n_en_mtext_ingame_shortreset
+ .word !mtext_ingame_enable,!i18n_en_mtext_ingame_enable
+ .word !mtext_ingame_buttons,!i18n_en_mtext_ingame_buttons
+ .word !mtext_ingame_holdoff,!i18n_en_mtext_ingame_holdoff
+ .word !mtext_ingame_savestate,!i18n_en_mtext_ingame_savestate
+ .word !mtext_savestate_slots,!i18n_en_mtext_savestate_slots
+ .word !mtext_loadstate_delay,!i18n_en_mtext_loadstate_delay
+ .word !mtext_sgb_enable_hooks,!i18n_en_mtext_sgb_enable_hooks
+ .word !mtext_sgb_enable_state,!i18n_en_mtext_sgb_enable_state
+ .word !mtext_sgb_enh_override,!i18n_en_mtext_sgb_enh_override
+ .word !mtext_sgb_spr_increase,!i18n_en_mtext_sgb_spr_increase
+ .word !mtext_sgb_volume_boost,!i18n_en_mtext_sgb_volume_boost
+ .word !mtext_sgb_clock,!i18n_en_mtext_sgb_clock
+ .word !mtext_sgb_bios,!i18n_en_mtext_sgb_bios
+ .word !mtext_ingame_regionpatch,!i18n_en_mtext_ingame_regionpatch
+ .word !mtext_ingame_1chiptransientfixes,!i18n_en_mtext_ingame_1chiptransientfixes
+ .word !mtext_ingame_brightlimit,!i18n_en_mtext_ingame_brightlimit
+ .word !mtext_ingame_resetpatch,!i18n_en_mtext_ingame_resetpatch
+ .word !mtext_ingame_autosave,!i18n_en_mtext_ingame_autosave
+ .word !mtext_ingame_autosave_msu1,!i18n_en_mtext_ingame_autosave_msu1
+ .word !mtext_chip_cx4_speed,!i18n_en_mtext_chip_cx4_speed
+ .word !mtext_chip_gsu_speed,!i18n_en_mtext_chip_gsu_speed
+ .word !mtext_chip_msu1_volume_boost,!i18n_en_mtext_chip_msu1_volume_boost
+ .word !mdesc_mm_last,!i18n_en_mdesc_mm_last
+ .word !mdesc_mm_favorites,!i18n_en_mdesc_mm_favorites
+ .word !mdesc_mm_cfg,!i18n_en_mdesc_mm_cfg
+ .word !mdesc_mm_sysinfo,!i18n_en_mdesc_mm_sysinfo
+ .word !mdesc_cfg_time,!i18n_en_mdesc_cfg_time
+ .word !mdesc_cfg_bsx,!i18n_en_mdesc_cfg_bsx
+ .word !mdesc_cfg_browser,!i18n_en_mdesc_cfg_browser
+ .word !mdesc_cfg_chip,!i18n_en_mdesc_cfg_chip
+ .word !mdesc_cfg_ingame,!i18n_en_mdesc_cfg_ingame
+ .word !mdesc_cfg_sgb,!i18n_en_mdesc_cfg_sgb
+ .word !mdesc_cfg_savestates,!i18n_en_mdesc_cfg_savestates
+ .word !mdesc_cfg_scic,!i18n_en_mdesc_cfg_scic
+ .word !mdesc_bsx_timesource,!i18n_en_mdesc_bsx_timesource
+ .word !mdesc_bsx_time,!i18n_en_mdesc_bsx_time
+ .word !mdesc_scic_enable,!i18n_en_mdesc_scic_enable
+ .word !mdesc_scic_vmode_menu,!i18n_en_mdesc_scic_vmode_menu
+ .word !mdesc_scic_vmode_game,!i18n_en_mdesc_scic_vmode_game
+ .word !mdesc_browser_sort,!i18n_en_mdesc_browser_sort
+ .word !mdesc_browser_hide_ext,!i18n_en_mdesc_browser_hide_ext
+ .word !mdesc_browser_screensaver,!i18n_en_mdesc_browser_screensaver
+ .word !mdesc_browser_screensaver_timeout,!i18n_en_mdesc_browser_screensaver_timeout
+ .word !mdesc_browser_ledbright,!i18n_en_mdesc_browser_ledbright
+ .word !mdesc_ingame_cheats,!i18n_en_mdesc_ingame_cheats
+ .word !mdesc_ingame_shortreset,!i18n_en_mdesc_ingame_shortreset
+ .word !mdesc_ingame_enable,!i18n_en_mdesc_ingame_enable
+ .word !mdesc_ingame_buttons,!i18n_en_mdesc_ingame_buttons
+ .word !mdesc_ingame_holdoff,!i18n_en_mdesc_ingame_holdoff
+ .word !mdesc_ingame_savestate,!i18n_en_mdesc_ingame_savestate
+ .word !mdesc_savestate_slots,!i18n_en_mdesc_savestate_slots
+ .word !mdesc_loadstate_delay,!i18n_en_mdesc_loadstate_delay
+ .word !mdesc_sgb_enable_hooks,!i18n_en_mdesc_sgb_enable_hooks
+ .word !mdesc_sgb_enable_state,!i18n_en_mdesc_sgb_enable_state
+ .word !mdesc_sgb_enh_override,!i18n_en_mdesc_sgb_enh_override
+ .word !mdesc_sgb_spr_increase,!i18n_en_mdesc_sgb_spr_increase
+ .word !mdesc_sgb_volume_boost,!i18n_en_mdesc_sgb_volume_boost
+ .word !mdesc_sgb_clock,!i18n_en_mdesc_sgb_clock
+ .word !mdesc_sgb_bios,!i18n_en_mdesc_sgb_bios
+ .word !mdesc_ingame_regionpatch,!i18n_en_mdesc_ingame_regionpatch
+ .word !mdesc_ingame_1chiptransientfixes,!i18n_en_mdesc_ingame_1chiptransientfixes
+ .word !mdesc_ingame_brightlimit,!i18n_en_mdesc_ingame_brightlimit
+ .word !mdesc_ingame_resetpatch,!i18n_en_mdesc_ingame_resetpatch
+ .word !mdesc_ingame_autosave,!i18n_en_mdesc_ingame_autosave
+ .word !mdesc_ingame_autosave_msu1,!i18n_en_mdesc_ingame_autosave_msu1
+ .word !mdesc_chip_cx4_speed,!i18n_en_mdesc_chip_cx4_speed
+ .word !mdesc_chip_gsu_speed,!i18n_en_mdesc_chip_gsu_speed
+ .word !mdesc_chip_msu1_volume_boost,!i18n_en_mdesc_chip_msu1_volume_boost
+ .word !mdesc_cx4_speed_fast,!i18n_en_mdesc_cx4_speed_fast
+ .word !mdesc_cx4_speed_normal,!i18n_en_mdesc_cx4_speed_normal
+ .word !mdesc_gsu_speed_fast,!i18n_en_mdesc_gsu_speed_fast
+ .word !mdesc_gsu_speed_normal,!i18n_en_mdesc_gsu_speed_normal
+ .word !text_filesel_selected_file,!i18n_en_text_filesel_selected_file
+ .word !text_filesel_context_add_to_favorites,!i18n_en_text_filesel_context_add_to_favorites
+ .word !mdesc_filesel_context_add_to_favorites,!i18n_en_mdesc_filesel_context_add_to_favorites
+ .word !text_filesel_context_remove_from_favorites,!i18n_en_text_filesel_context_remove_from_favorites
+ .word !mdesc_filesel_context_remove_from_favorites,!i18n_en_mdesc_filesel_context_remove_from_favorites
+ .word !text_recent_context_remove_from_recent,!i18n_en_text_recent_context_remove_from_recent
+ .word !mdesc_recent_context_remove_from_recent,!i18n_en_mdesc_recent_context_remove_from_recent
+ .word !text_filesel_set_as_autoboot,!i18n_en_text_filesel_set_as_autoboot
+ .word !mdesc_filesel_set_as_autoboot,!i18n_en_mdesc_filesel_set_as_autoboot
+ .word !text_statusbar_play,!i18n_en_text_statusbar_play
+ .word !text_statusbar_keys,!i18n_en_text_statusbar_keys
+ .word !text_statusbar_spc,!i18n_en_text_statusbar_spc
+ .word !text_statusbar_menu,!i18n_en_text_statusbar_menu
+ .word !text_last,!i18n_en_text_last
+ .word !text_favorite,!i18n_en_text_favorite
+ .word !text_on_p1,!i18n_en_text_on_p1
+ .word !text_on_p2,!i18n_en_text_on_p2
+ .word !text_on,!i18n_en_text_on
+ .word !text_off,!i18n_en_text_off
+ .word !text_enabled,!i18n_en_text_enabled
+ .word !text_disabled,!i18n_en_text_disabled
+ .word !text_normal,!i18n_en_text_normal
+ .word !text_fast,!i18n_en_text_fast
+ .word !text_rtc,!i18n_en_text_rtc
+ .word !text_custom,!i18n_en_text_custom
+ .word !text_yes,!i18n_en_text_yes
+ .word !text_no,!i18n_en_text_no
+ .word !text_auto,!i18n_en_text_auto
+ .word !text_add,!i18n_en_text_add
+ .word !text_remove,!i18n_en_text_remove
+ .word !text_edit,!i18n_en_text_edit
+ .word !text_save,!i18n_en_text_save
+ .word !text_1min,!i18n_en_text_1min
+ .word !text_2min,!i18n_en_text_2min
+ .word !text_3min,!i18n_en_text_3min
+ .word !text_4min,!i18n_en_text_4min
+ .word !text_5min,!i18n_en_text_5min
+ .word !text_10min,!i18n_en_text_10min
+ .word !text_15min,!i18n_en_text_15min
+ .word !text_20min,!i18n_en_text_20min
+ .word !text_30min,!i18n_en_text_30min
+ .word !text_45min,!i18n_en_text_45min
+ .word !text_60min,!i18n_en_text_60min
+ .word !text_15_max,!i18n_en_text_15_max
+ .word !text_spcplay,!i18n_en_text_spcplay
+ .word !text_spcload,!i18n_en_text_spcload
+ .word !text_spcstarta,!i18n_en_text_spcstarta
+ .word !text_spcstartb,!i18n_en_text_spcstartb
+ .word !text_spcstartc,!i18n_en_text_spcstartc
+ .word !text_spcstartd,!i18n_en_text_spcstartd
+ .word !text_spc_statusbar,!i18n_en_text_spc_statusbar
+ .word !text_loading,!i18n_en_text_loading
+ .word !text_saving,!i18n_en_text_saving
+ .word !text_cheat,!i18n_en_text_cheat
+ .word !cheat_tab_head,!i18n_en_cheat_tab_head
+ .word !cheat_detail_head,!i18n_en_cheat_detail_head
+ .word !theme_caption,!i18n_en_theme_caption
+ .word !theme_name,!i18n_en_theme_name
+ .word !theme_size,!i18n_en_theme_size
+ .word !theme_loading_title,!i18n_en_theme_loading_title
+ .word !i18n_label,!i18n_en_i18n_label
+ .word 0,0
