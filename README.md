@@ -22,6 +22,17 @@ sfc-menu-fixed-v0.1.0.zip。运行包只有六份菜单 ROM，没有外置字体
 语言固定在 ROM 中，重启后不变，没有运行时语言选择，也不依赖固件保存语言。
 需要固件支持原版 sd2snes 菜单协议、原版菜单地址布局及完整加载 3MiB 菜单镜像。
 
+## 截图预览
+
+| 版本 | 主界面 | 设置菜单 |
+| --- | --- | --- |
+| 原版小字 · 中文 | ![主界面](images/screenshots/Original-8px-ZH-main.png) | ![设置菜单](images/screenshots/Original-8px-ZH-settings.png) |
+| 原版小字 · 英文 | ![主界面](images/screenshots/Original-8px-EN-main.png) | ![设置菜单](images/screenshots/Original-8px-EN-settings.png) |
+| 原版大字 · 中文 | ![主界面](images/screenshots/Original-12px-ZH-main.png) | ![设置菜单](images/screenshots/Original-12px-ZH-settings.png) |
+| 原版大字 · 英文 | ![主界面](images/screenshots/Original-12px-EN-main.png) | ![设置菜单](images/screenshots/Original-12px-EN-settings.png) |
+| 起司娘大字 · 中文 | ![主界面](images/screenshots/Chis-12px-ZH-main.png) | ![设置菜单](images/screenshots/Chis-12px-ZH-settings.png) |
+| 起司娘大字 · 英文 | ![主界面](images/screenshots/Chis-12px-EN-main.png) | ![设置菜单](images/screenshots/Chis-12px-EN-settings.png) |
+
 ## 源码
 
 菜单汇编源码位于 src，字库输入位于 fonts。
