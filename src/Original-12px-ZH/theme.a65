@@ -1,0 +1,199 @@
+.link page $c0
+#include "memmap.i65"
+
+theme_center_window:
+  php
+  sep #$20 : .as
+  lda window_w : cmp #26 : bcs +
+  lda #26 : sta window_w
++ lda #64 : sec : sbc window_w : lsr : and #$fe : sta window_x
+  lda #15 : sec : sbc window_h : lsr : clc : adc #3 : sta window_y
+  plp
+  rts
+
+theme_header:
+  php : phb
+  rep #$30 : .al : .xl
+  pha : phx : phy
+  sep #$20 : .as
+  lda #$7e : pha : plb
+  stz theme_counter_valid
+  lda #2 : sta print_x
+  lda #4 : sta print_y
+  stz print_pal
+  lda #^space64 : sta print_bank
+  ldx #!space64 : stx print_src
+  lda #43 : sta print_count
+  jsr hiprint
+  lda #^FILESEL_CWD : sta print_bank
+  ldx #!FILESEL_CWD : stx print_src
+  lda #43 : sta print_count
+  jsr hiprint
+  rep #$30 : .al : .xl
+  ply : plx : pla : plb : plp
+  rts
+
+theme_counter:
+  php : phb
+  rep #$30 : .al : .xl
+  pha : phx : phy
+  sep #$20 : .as
+  lda #$7e : pha : plb
+  rep #$20 : .al
+  lda dirend_addr : lsr : lsr : tay
+  beq theme_counter_empty
+  lda dirptr_addr : sec : sbc dirstart_addr : lsr : lsr
+  clc : adc filesel_sel : inc
+  bra theme_counter_selected
+theme_counter_empty:
+  lda #0
+theme_counter_selected:
+  tax
+  sep #$20 : .as
+  lda theme_counter_valid
+  beq theme_counter_changed
+  rep #$20 : .al
+  txa : cmp theme_last_selected : bne theme_counter_changed
+  tya : cmp theme_last_total : bne theme_counter_changed
+  jmp theme_counter_done
+theme_counter_changed:
+  rep #$20 : .al
+  stx theme_last_selected : sty theme_last_total
+  txa : ldx #0
+  jsr theme_decimal
+  sep #$20 : .as
+  lda #$2f : sta theme_count_buf,x : inx
+  rep #$20 : .al
+  lda theme_last_total
+  jsr theme_decimal
+  sep #$20 : .as
+  stz theme_count_buf,x
+  stx theme_count_len
+  lda theme_count_len : asl : clc : adc theme_count_len : inc : lsr : sta theme_count_len
+  lda #1 : sta theme_counter_valid
+  lda #4 : sta print_y
+  lda #45 : sta print_x
+  stz print_pal
+  lda #^space64 : sta print_bank
+  ldx #!space64 : stx print_src
+  lda #17 : sta print_count
+  jsr hiprint
+  lda #62 : sec : sbc theme_count_len : sta print_x
+  lda #^theme_count_buf : sta print_bank
+  ldx #!theme_count_buf : stx print_src
+  lda theme_count_len : sta print_count
+  lda theme_count_buf : pha
+  rep #$20 : .al
+  ldy #!theme_count_buf
+  jsr strlen
+  sep #$20 : .as
+  lda @cf12_measured_units : and #1 : sta @cf12_print_phase
+  pla
+  jsr hiprint
+theme_counter_done:
+  rep #$30 : .al : .xl
+  ply : plx : pla : plb : plp
+  rts
+
+theme_decimal:
+  php
+  rep #$30 : .al : .xl
+  phy
+  ldy #0
+theme_decimal_next:
+  sta @$004204
+  sep #$20 : .as
+  lda #10 : sta @$004206
+  nop : nop : nop : nop : nop : nop : nop : nop
+  lda @$004216 : ora #$30 : pha
+  iny
+  rep #$20 : .al
+  lda @$004214
+  bne theme_decimal_next
+theme_decimal_pop:
+  sep #$20 : .as
+  pla : sta theme_count_buf,x : inx
+  dey
+  bne theme_decimal_pop
+  rep #$30 : .al : .xl
+  ply : plp
+  rts
+
+theme_caption .byt "Storage",0
+theme_name .byt "Name",0
+theme_size .byt "Size",0
+theme_loading_title .byt $e6,$ad,$a3,$e5,$9c,$a8,$e8,$bd,$bd,$e5,$85,$a5,0
+
+#define I18N_FIRST_ROW 5
+; 两套主题共用的语言选择；只刷新界面，不改变游戏配置或主机状态。
+#include "zh_memory.i65"
+#define LANG_STATUS $ff1118
+#define LANG_COMMAND $1c
+
+i18n_init:
+  php
+  sep #$20 : .as
+  lda #0
+  sta @i18n_language
+  lda #0 : sta @i18n_pending : sta @i18n_refresh
+  plp : rts
+
+i18n_string:
+  .al : .xl
+  pha : phx
+  lda @i18n_language : and #$ff : beq i18n_string_done
+  lda z_ptr+2 : and #$ff : cmp #$c0 : bne i18n_string_done
+  ldx #0
+- lda @i18n_pairs,x : beq i18n_string_done
+  cmp z_ptr : beq +
+  inx : inx : inx : inx : bra -
++ lda @i18n_pairs+2,x : sta z_ptr
+i18n_string_done:
+  plx : pla : rts
+
+i18n_toggle:
+  rtl
+
+i18n_clear_browser:
+  php : phb
+  sep #$20 : .as
+  rep #$10 : .xl
+  lda #$7e : pha : plb
+  lda #^space64 : sta !print_bank
+  ldx #!space64 : stx !print_src
+  stz !print_pal
+  ldy #0
+i18n_clear_headers:
+  tyx
+  lda @i18n_header_rows,x : cmp #$ff : beq i18n_clear_sizes
+  sta !print_y
+  stz !print_x
+  lda #64 : sta !print_count
+  jsr hiprint
+  iny : bra i18n_clear_headers
+i18n_clear_sizes:
+  ldy #0
+- tya : clc : adc #I18N_FIRST_ROW : sta !print_y
+  lda #54 : sta !print_x
+  lda #9 : sta !print_count
+  jsr hiprint
+  iny : tya : cmp !listdisp : bcc -
+  stz !i18n_refresh
+  plb : plp : rts
+
+i18n_header_rows .byt 4,17,$ff
+
+; 输入print_src/bank；在当前窗口内按实际字宽居中，不改变原字符串和操作。
+cf12_center_text:
+  php : phb
+  rep #$30 : .al : .xl
+  pha : phy
+  ldy !print_src
+  sep #$20 : .as
+  lda !print_bank : pha : plb
+  jsr strlen
+  tya : sta @cf12_layout_width
+  lda @window_w : sec : sbc @cf12_layout_width : lsr
+  clc : adc @window_x : sta @print_x
+  rep #$30 : .al : .xl
+  ply : pla : plb : plp : rts
